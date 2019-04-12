@@ -3,18 +3,18 @@ import numpy as np
 
 #создаёт столбцы rate (доля успешно выполненных заданий) и faluires (кол-во неудач), сортирует по первому
 
-assesors_df = pd.read_csv('D:\\Desktop\\test_ya\\data_task3.csv', sep='\t').set_index('uid')
-assesors_df['sucсess'] = np.where(assesors_df['jud'] == assesors_df['cjud'], 1, 0)
-assesors_df['tasks'] = 1
+asessors_df = pd.read_csv('D:\\Desktop\\test_ya\\data_task3.csv', sep='\t').set_index('uid')
+asessors_df['sucсess'] = np.where(asessors_df['jud'] == asessors_df['cjud'], 1, 0)
+asessors_df['tasks'] = 1
 
-assesors_df = assesors_df.drop(['cjud', 'jud', 'docid'], axis=1).groupby(assesors_df.index).sum()
+asessors_df = asessors_df.drop(['cjud', 'jud', 'docid'], axis=1).groupby(asessors_df.index).sum()
 
-assesors_df['rate'] = assesors_df['sucсess'] / assesors_df['tasks']
-assesors_df = assesors_df.sort_values(by=['rate'])
-assesors_df['faluires'] = assesors_df['tasks'] - assesors_df['sucсess']
+asessors_df['rate'] = asessors_df['sucсess'] / asessors_df['tasks']
+asessors_df = asessors_df.sort_values(by=['rate'])
+asessors_df['faluires'] = asessors_df['tasks'] - asessors_df['sucсess']
 
 
-assesors_df.to_csv('assesors_rating.csv', sep = '\t', encoding='utf-8')
+assesors_df.to_csv('asessors_rating.csv', sep = '\t', encoding='utf-8')
 
 
 
